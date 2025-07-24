@@ -1,0 +1,16 @@
+<!-- virement -->
+
+<div *ngIf="data.password" mat-dialog-content>
+  <p>Id du destinataire  {{data.id}}</p>
+  <p>Montant (BTC). ~ {{(data.amount/data.changeRate).toFixed(2)}} €</p>
+  <mat-form-field >
+    <mat-label>Montant</mat-label>
+    <input class="input" matInput [(ngModel)]="data.amount">
+  </mat-form-field>
+  <p style="color:red;">Attention cette opération est irréversible !</p>
+  <p style="color:red;">Veuillez bien vérifier les informations avant de valider !</p>
+</div>
+<div *ngIf="data.password" mat-dialog-actions>
+  <button style="background-color: #011a02 !important; color:white;" mat-stroked-button class="maja-button" [mat-dialog-close]="data.id+';'+data.amount">Valider le virement.</button>
+  <button style="background-color: #5c0303 !important; color:white;" mat-stroked-button class="maja-button" (click)="onNoClick()">Annuler.</button>
+</div>
